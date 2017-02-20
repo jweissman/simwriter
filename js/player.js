@@ -30,7 +30,7 @@ var Player = function(writingSurface) {
       if (this.coinflip()) {
         this.writingSurface.newline();
       }
-      console.log(this.name, "wrote to doc!!!!!!!!!");
+      //console.log(this.name, "wrote to doc!!!!!!!!!");
     }
   };
 

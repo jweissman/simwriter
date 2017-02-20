@@ -22,13 +22,13 @@ var AbstractDoc = function() {
 
   this.writeWord = function() {
     word = ' ' + this.randomWord('X');
-    console.log("graph before writing", this.content[this.content.length-1]);
-    console.log("content before writing", this.content);
-    console.log("WRITING WORD: ", word);
-    //this.content[this.content.length-1] = this.content[this.content.length-1] || "";
+    //console.log("graph before writing", this.content[this.content.length-1]);
+    //console.log("content before writing", this.content);
+    //console.log("WRITING WORD: ", word);
+    this.content[this.content.length-1] = this.content[this.content.length-1] || "";
     this.content[this.content.length-1] += word;
-    console.log("contents after writing", this.content[this.content.length-1]);
-    console.log("content after writing", this.content);
+    //console.log("contents after writing", this.content[this.content.length-1]);
+    //console.log("content after writing", this.content);
     //this.repaint();
   };
 
@@ -47,7 +47,7 @@ var AbstractDoc = function() {
   };
 
   this.repaint = function() {
-    console.log("[abstract doc] repainting!", this.content);
+    //console.log("[abstract doc] repainting!", this.content);
     repaintedContent = "";
     for (line of this.content) {
       repaintedContent += "<div class='phrase'>";
@@ -63,6 +63,7 @@ var AbstractDoc = function() {
       repaintedContent += "</div>";
     }
     this.surface.innerHTML = repaintedContent;
+    this.surface.scrollTop = this.surface.scrollHeight;
   }
 };
 
