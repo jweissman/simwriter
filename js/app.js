@@ -12,6 +12,10 @@
       this.player.startWriting(workType);
     },
 
+    publish: function(mediaType) {
+      console.log("Told to publish document in ", mediaType);
+    },
+
     step: function() {
       this.player.work();
       this.abstractDocument.repaint();

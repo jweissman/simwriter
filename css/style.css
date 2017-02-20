@@ -18,6 +18,8 @@ a {
   margin: 40px;
   padding: 24px;
   height: 80vh;
+  width: 90vw;
+  min-width: 900px;
   display: flex;
   flex-direction: column;
   background: #222;
@@ -25,7 +27,8 @@ a {
 }
 
 .top-bar {
-  padding: 2px;
+  padding: 22px;
+  margin: 5px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -40,20 +43,36 @@ a {
 .frame {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-.new-composition {
-  width: 200px;
+.left-menu {
+  width: 15%;
   min-width: 200px;
+  padding: 20px;
+  margin-right: 50px;
+  background: #333;
+}
+
+.right-menu {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.active-document-container {
+  width: 50%;
+  border: 5px dashed #555;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 #active-document {
   color: #ddd;
   font-size: 30pt;
   font-family: Courier, monospaced;
-  width: 800px;
-  padding: 20px;
-  min-width: 500px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -85,4 +104,25 @@ a {
   min-width: 10px;
   height: 10px;
   min-height: 10px;
+}
+
+.active-document-stats {
+  display: flex;
+  color: #555;
+  height: 20px;
+}
+
+ul.system-messages {
+  list-style: none;
+}
+
+ul.system-messages > li {
+  padding: 8px;
+  margin: 2px;
+  background: #121;
+  font-size: 70%;
+}
+
+ul.system-messages > li.highlight {
+  background: #343;
 }

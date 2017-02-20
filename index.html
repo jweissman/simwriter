@@ -19,6 +19,10 @@
   <div class="container">
     <header>
       <div class="top-bar">
+        <span class='identity'>
+          <b>SimWriter</b> 2017 (alpha)
+        </span>
+        <span>|</span>
         <span class='science-stat'>
           science 0
         </span>
@@ -35,8 +39,8 @@
     </header>
 
     <div class='frame'>
-      <aside class="new-composition">
-        <details>
+      <aside class="left-menu">
+        <details id='compose'>
           <summary>Compose...</summary>
           <p>Create a new document!</p>
           <details>
@@ -46,7 +50,7 @@
                 <a onclick="App.write('poem')" href="javascript:void(0);">
                   Poem
                 </a>
-                (+3 fame, rad. potential 20%, est. cash value $8)
+                <p>Express yourself.</p>
               </li>
             </ul>
           </details>
@@ -57,15 +61,72 @@
                 <a onclick="App.write('resume')" href="javascript:void(0);">
                   Resume
                 </a>
-                (+1 fame, rad. potential 0%, est. cash value $1/day)
+                <p>Put yourself in a good light.</p>
               </li>
             </ul>
           </details>
         </details>
+        <br/>
+
+        <details id='revise'>
+          <summary>Revise...</summary>
+          <p>Improve the document in progress</p>
+        </details>
+        <br/>
+
+        <details id='publish'>
+          <summary>Publish...</summary>
+          <p>Sell the document in progress</p>
+          <details>
+            <summary>Periodical...</summary>
+            <ul>
+              <li>
+                <a onclick="App.publish('magazine')" href="javascript:void(0);">
+                  Blog
+                </a>
+                <p>Write on a blog.</p>
+              </li>
+            </ul>
+          </details>
+          <details>
+            <summary>Commercial...</summary>
+            <ul>
+              <li>
+                <a onclick="App.publish('book')" href="javascript:void(0);">
+                  Job Board
+                </a>
+                <p>Post on an employment site. <i>Resumes only, please.</i></p>
+              </li>
+            </ul>
+          </details>
+        </details>
+
       </aside>
 
-      <div id="active-document">
+      <div class="active-document-container">
+        <div id="active-document">
+        </div>
+        <div class="active-document-stats">
+          CURRENTLY WRITING: -- | WORD COUNT: -- | RAD: -- | ECV: $--
+        </div>
       </div>
+
+      <aside class='right-menu'>
+        <ul class='system-messages'>
+          <li class='highlight'>
+            <p>System messages will appear here.</p>
+          </li>
+          <li>
+            <p>Remember: they can't hear you dreaming! -Admin</p>
+          </li>
+          <li>
+            <p> Did you find the frozen sea you were looking for? -Admin </p>
+          </li>
+          <li>
+            <p>The isolation is wonderful here. -Admin</p>
+          </li>
+        </ul>
+      </aside>
     </div>
   </div>
 
