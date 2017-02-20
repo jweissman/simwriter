@@ -11,6 +11,7 @@
 
     write: function(workType) {
       this.player.startWriting(workType);
+      this.messageLog.note("Work begins on a new " + workType + "!");
     },
 
     publish: function(mediaType) {
@@ -19,6 +20,7 @@
         console.log("work value", this.abstractDocument.estimateValue());
         var docValue = (this.abstractDocument.estimateValue() * this.mediaMultiplier(mediaType)).toFixed(2);
         console.log("DOC IS WORTH: $", docValue);
+        this.messageLog.note("A new " + this.abstractDocument.workType + " was sold for $" + docValue + ".");
         this.player.sellDocument(docValue);
       } else {
         console.log("No current document to publish!!");

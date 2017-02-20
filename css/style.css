@@ -120,6 +120,9 @@ a {
 
 ul#system-messages {
   list-style: none;
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
 ul#system-messages > li {
