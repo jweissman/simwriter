@@ -11,14 +11,37 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="simwriter" startnode="1" creator="Twine" creator-version="2.0.11" ifid="AF5EE7E0-A136-4559-8915-66B39824F716" format="Harlowe" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Simwriter" tags="" position="181,66">Welcome to the system.  You want to become a great writer.  
+<tw-storydata name="simwriter" startnode="1" creator="Twine" creator-version="2.0.11" ifid="AF5EE7E0-A136-4559-8915-66B39824F716" format="Harlowe" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="simwriter" tags="" position="179,65">(set: $radnorm to 0)
+(set: $exp to 0)
+
+Welcome to the system.  We are happy to have you.  We&#39;re very pleased you&#39;ve decided to become a writer for our team.  Please write an official document for us to get started building your skills.  
+
+write:
+[[an official document -&gt; norm1]] 
+[[a weird document that isn&#39;t really official -&gt; rad1]] 
+</tw-passagedata>
+<tw-passagedata pid="2" name=" norm1" tags="" position="52,271">(set: $radnorm to $radnorm + 1) (set: $exp to $exp + 1)
+(if: $exp &gt; 6)[ Oh hey congrats you&#39;ve become a pro.  We&#39;re ejecting you tomorrow.  ]
+(else-if: $radnorm &lt; 4)[
+Thank you.  Your document was received and processed.  We have another task for you.  It involves writing an official document.  
 
 Write:
-[[A Very Normal Document | Normie 1]]
-[[A Very Experimental Document | Radical1 ]]
+[[an official document -&gt; norm1]]
+[[some other document that isn&#39;t what is being asked for at all -&gt; rad1]] ]
+(else:)[ You have become a celebrity icon.  Congratulations and bye. ]
 </tw-passagedata>
-<tw-passagedata pid="2" name=" Normie 1" tags="" position="68,255">You have become one point more normal</tw-passagedata>
-<tw-passagedata pid="3" name=" Radical1 " tags="" position="282,249">You have become one point more radical</tw-passagedata>
+<tw-passagedata pid="3" name=" rad1" tags="" position="323,271">(set: $radnorm to $radnorm - 1) (set: $exp to $exp + 1)
+(if: $exp &gt; 6)[ Oh hey congrats you&#39;ve become a pro.  We&#39;re ejecting you tomorrow.]
+(else-if: $radnorm &gt; -4)[
+Wow who the fuck do you think you are?  This is garbage.  seriously who writes this shit?  Fortunately the system is benevolent - we&#39;re happy to give you another chance.  
+
+write:
+[[an official document-&gt; norm1]] 
+[[some other shit -&gt; rad1]] 
+]
+(else:)[ You have become of no use to the system.  Good luck finding some hipster friends.  Later.  ]
+
+</tw-passagedata>
 </tw-storydata>
 
 
