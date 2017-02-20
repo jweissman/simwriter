@@ -1,4 +1,4 @@
-var Player = function(writingSurface) {
+var Player = function(writingSurface, docStats) {
   this.writingSurface = writingSurface;
   this.name = "Alex";
   this.money = 106;
@@ -16,6 +16,7 @@ var Player = function(writingSurface) {
       console.log("working on: ", workType);
       this.writing = true;
       this.workingOn = workType;
+      this.writingSurface.startWork(workType);
     } else {
       console.log("WARNING: ", this.name, " was told to write something, but was already working on something. You should probably focus your energy and work on one thing at a time.");
       console.log(this.name, "is already working on", this.workingOn);
