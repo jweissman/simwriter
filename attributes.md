@@ -7,6 +7,8 @@
 | Capital                | Pub + klout/alignment             | More > norm++ & rad++       |
 | Experience (production)| Doc, event, group, pub            | More > norm++ & rad++       |
 |                        |                                   |                             |
+|                        |                                   |                             |
+|                        |                                   |                             |
 | Ability                | Given                             | More > norm++ & rad++       |
 | Class                  | Given > altered by attributes     | Higher > norm++ & rad++     |
 | Species                | Given                             | More human > norm++ & rad++ |
