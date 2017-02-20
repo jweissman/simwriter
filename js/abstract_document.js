@@ -23,6 +23,7 @@ var AbstractDoc = function() {
 
   this.clear = function() {
     this.content = [""];
+    this.workType = null;
   };
 
   this.randomWord = function(character) {
@@ -46,6 +47,7 @@ var AbstractDoc = function() {
       }
       repaintedContent += "</div>";
     }
+
     this.surface.innerHTML = repaintedContent;
     this.surface.scrollTop = this.surface.scrollHeight;
 
@@ -56,7 +58,7 @@ var AbstractDoc = function() {
     if (this.workType != null) {
       return "FILE " + this.workType + ".txt &nbsp; " +
              "WORDS: " + this.wordCount() + " &nbsp; " +
-             "VALUE: $" + this.estimateValue() + " &nbsp; " +
+             "EST. VALUE: $" + this.estimateValue() + " &nbsp; " +
              "RAD: " + this.radicalism() + "%";
     } else {
       return "";
@@ -66,27 +68,34 @@ var AbstractDoc = function() {
   this.wordCount = function() {
     var wc = 0;
     for (line of this.content) {
-      console.log("line", line);
       wc += line.split(' ').length;
     }
     return wc;
   };
 
   this.estimateValue = function() {
-    return (1.5 + this.wordCount() * this.workValue(this.workType)).toFixed(2);
+    return (1.5 + this.wordCount() * this.workTypeMultiplier(this.workType)).toFixed(2);
   };
 
   this.radicalism = function() {
-    return (0.01 + this.wordCount() * 0.009).toFixed(0);
+    return (0.01 + this.wordCount() * this.radPotential(this.workType)).toFixed(0);
   };
 
-  this.workValue = function(workType) {
+  this.workTypeMultiplier = function(workType) {
     if (this.workType == 'resume') {
       return 0.08;
     } else if (this.workType == 'poem') {
       return 0.02;
     }
   };
+
+  this.radPotential = function(workType) {
+    if (this.workType == 'resume') {
+      return 0.001;
+    } else if (this.workType == 'poem') {
+      return 0.2;
+    }
+  }
 };
 
 window.AbstractDoc = AbstractDoc;

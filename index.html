@@ -23,16 +23,16 @@
           <b>SimWriter</b> 2017 (alpha)
         </span>
         <span>|</span>
-        <span class='science-stat'>
+        <span id='science-stat'>
           science 0
         </span>
-        <span class='philosophy-stat'>
+        <span id='philosophy-stat'>
           philosophy 0
         </span>
-        <span class='art-stat'>
+        <span id='art-stat'>
           art 0
         </span>
-        <span class='money-stat'>
+        <span id='money-stat'>
           $0
         </span>
       </div>
@@ -40,6 +40,12 @@
 
     <div class='frame'>
       <aside class="left-menu">
+        <details id='train'>
+          <summary>Train...</summary>
+          <p>Exercise your skills</p>
+        </details>
+        <br/>
+
         <details id='compose'>
           <summary>Compose...</summary>
           <p>Create a new document!</p>
@@ -81,7 +87,7 @@
             <summary>Periodical...</summary>
             <ul>
               <li>
-                <a onclick="App.publish('magazine')" href="javascript:void(0);">
+                <a onclick="App.publish('blog')" href="javascript:void(0);">
                   Blog
                 </a>
                 <p>Write on a blog.</p>
@@ -92,7 +98,7 @@
             <summary>Commercial...</summary>
             <ul>
               <li>
-                <a onclick="App.publish('book')" href="javascript:void(0);">
+                <a onclick="App.publish('job board')" href="javascript:void(0);">
                   Job Board
                 </a>
                 <p>Post on an employment site. <i>Resumes only, please.</i></p>
@@ -100,7 +106,6 @@
             </ul>
           </details>
         </details>
-
       </aside>
 
       <div class="active-document-container">
@@ -111,8 +116,8 @@
       </div>
 
       <aside class='right-menu'>
-        <ul class='system-messages'>
-          <li class='highlight'>
+        <ul id='system-messages'>
+          <li>
             <p>System messages will appear here.</p>
           </li>
           <li>
@@ -129,6 +134,7 @@
     </div>
   </div>
 
+  <script src="js/message_log.js"></script>
   <script src="js/abstract_document.js"></script>
   <script src="js/player.js"></script>
   <script src="js/app.js"></script>
