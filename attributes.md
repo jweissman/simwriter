@@ -1,10 +1,15 @@
 
 
-| Attribute            | How to obtain                     | Benefits                    |
-|----------------------|-----------------------------------|-----------------------------|
-|Alignment (good/bad)  | Doctype, eventtype, grouptype, $, | Good > norm++, evil > rad++ |
-
-
+|  Attribute             | How to Obtain                     | Benefits                    |
+|------------------------|-----------------------------------|-----------------------------|
+| Alignment (good/bad)   | Doctype, eventtype, grouptype, $, | Good > norm++, evil > rad++ |
+| Klout (good/bad)       | Event, group,                     | More > norm++; less > rad++ |
+| Capital                | Pub + klout/alignment             | More > norm++ & rad++       |
+| Experience (production)| Doc, event, group, pub            | More > norm++ & rad++       |
+|------------------------|-----------------------------------|-----------------------------|
+| Ability                | Given                             | More > norm++ & rad++       |
+| Class                  | Given > altered by attributes     | Higher > norm++ & rad++     |
+| Species                | Given                             | More human > norm++ & rad++ |
 
 notes:
 
