@@ -16,12 +16,64 @@
 </head>
 
 <body>
-  <header>
-    <h2>SimWriter 2017</h2>
-  </header>
   <div class="container">
-    <p>Hello.</p>
+    <header>
+      <div class="top-bar">
+        <span class='science-stat'>
+          science 0
+        </span>
+        <span class='philosophy-stat'>
+          philosophy 0
+        </span>
+        <span class='art-stat'>
+          art 0
+        </span>
+        <span class='money-stat'>
+          $0
+        </span>
+      </div>
+    </header>
+
+    <div class='frame'>
+      <aside class="new-composition">
+        <details>
+          <summary>Compose...</summary>
+          <p>Create a new document!</p>
+          <details>
+            <summary>Personal...</summary>
+            <ul>
+              <li>
+                <a onclick="App.write('poem')" href="javascript:void(0);">
+                  Poem
+                </a>
+                (+3 fame, rad. potential 20%, est. cash value $8)
+              </li>
+            </ul>
+          </details>
+          <details>
+            <summary>Professional...</summary>
+            <ul>
+              <li>
+                <a onclick="App.write('resume')" href="javascript:void(0);">
+                  Resume
+                </a>
+                (+1 fame, rad. potential 0%, est. cash value $1/day)
+              </li>
+            </ul>
+          </details>
+        </details>
+      </aside>
+
+      <div id="active-document">
+      </div>
+    </div>
   </div>
+
+  <script src="js/abstract_document.js"></script>
+  <script src="js/player.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    App.launch();
+  </script>
 </body>
 </html>

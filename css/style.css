@@ -1,6 +1,88 @@
-// styles go here
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 11pt;
+  background-color: #4a4850;
+  color: #ccc;
+}
 
-html, body {
-  background: #eee;
-  color: #333;
+summary {
+  color: #eee;
+}
+
+a {
+  text-decoration: none;
+  color: #eee;
+}
+
+.container {
+  margin: 40px;
+  padding: 24px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: #222;
+  border: 1px solid black;
+}
+
+.top-bar {
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.top-bar > span { display: flex; margin-right: 20px; }
+.top-bar > .money-stat { color: lightgreen; }
+.top-bar > .science-stat { color: lightblue; }
+.top-bar > .art-stat { color: lightpink; }
+.top-bar > .philosophy-stat { color: orange; }
+
+.frame {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-composition {
+  width: 200px;
+  min-width: 200px;
+}
+
+#active-document {
+  color: #ddd;
+  font-size: 30pt;
+  font-family: Courier, monospaced;
+  width: 800px;
+  padding: 20px;
+  min-width: 500px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+#active-document > .phrase {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  height: 16px;
+  min-height: 16px;
+  padding: 3px;
+}
+
+.phrase > .block {
+  display: flex;
+  flex-direction: column;
+  background-color: #ddd;
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  min-height: 10px;
+}
+
+.phrase > .space {
+  display: flex;
+  flex-direction: column;
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  min-height: 10px;
 }
