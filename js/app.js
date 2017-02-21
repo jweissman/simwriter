@@ -1,6 +1,4 @@
-// core App definition
 (function (window) {
-  //var Player = window.Player;
   var App = {
     launch: function() {
       console.log("----> launched simwriter");
@@ -10,8 +8,11 @@
     },
 
     write: function(workType) {
-      this.player.startWriting(workType);
-      this.messageLog.note("Work begins on a new " + workType + "!");
+      if (!this.player.writing) {
+        console.log("START WRITING!");
+        this.player.startWriting(workType);
+        this.messageLog.note("Work begins on a new " + workType + "!");
+      }
     },
 
     publish: function(mediaType) {

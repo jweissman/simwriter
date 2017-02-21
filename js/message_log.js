@@ -39,7 +39,6 @@ var MessageLog = function() {
         "</li>";
     }
     log.innerHTML = logContent;
-    //log.scrollTop = log.scrollHeight;
   };
 };
 

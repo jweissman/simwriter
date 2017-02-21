@@ -1,65 +1,89 @@
 var AbstractDoc = function() {
   this.surface = document.getElementById("active-document");
   this.stats = document.getElementById("active-document-stats");
-  this.content = [""];
-  this.maxWordLength = 15;
+  this.cursorRow = 0;
+  this.cursorColumn = 0;
+  this.documentScanComplete = false;
   this.workType = null;
+  this.template = null;
 
   this.startWork = function(workType) {
     this.clear();
     this.workType = workType;
-  };
-
-  this.writeWord = function() {
-    word = ' ' + this.randomWord('X');
-    this.content[this.content.length-1] = this.content[this.content.length-1] || "";
-    this.content[this.content.length-1] += word;
-  };
-
-  this.newline = function() {
-    this.content.push("");
-    this.currentParagraphIndex += 1;
+    console.log("WORK TYPE", workType);
+    if (workType == 'resume') {
+      this.template = (new AbstractTemplate()).simpleArticle();
+    } else if (workType == 'poem') {
+      this.template = (new AbstractTemplate()).freeversePoem();
+    } else {
+      console.log("WARNING: I don't know the template for ", workType);
+    }
   };
 
   this.clear = function() {
-    this.content = [""];
+    this.template = null;
+    this.cursorRow = 0;
+    this.cursorCol = 0;
+    this.documentScanComplete = false;
     this.workType = null;
   };
 
-  this.randomWord = function(character) {
-    len = Math.floor(Math.random() * this.maxWordLength);
-    return new Array(len + 1).join( character );
+  this.advanceCursor = function() {
+    if (this.template != null) {
+      if (typeof(this.template.content[this.cursorRow]) === 'undefined') { this.documentScanComplete = true; return; }
+      var curRowLen = this.template.content[this.cursorRow].length;
+      if (this.cursorRow < (this.template.content.length)) {
+        if (this.cursorCol >= curRowLen) {
+          this.cursorRow += 1;
+          this.cursorCol = 0;
+        } else {
+          this.cursorCol += 1;
+        }
+      } else {
+        console.log("WE ARE DONE ADVANCING CURSOR THROUGH TEMPLATE...");
+        this.documentScanComplete = true;
+      }
+    } else {
+      console.log("WARNING: Told to advance cursor but template was null");
+    }
+  };
+
+  this.renderLine = function(line, lineNumber) {
+    renderedLine = "";
+    line.split('').forEach(function(character, charCol) {
+      var pastCursor = (lineNumber > this.cursorRow || (lineNumber == this.cursorRow && charCol > this.cursorCol));
+      var characterClass = 'space';
+      if (character != ' ') {
+        characterClass = 'block';
+        if (pastCursor) {
+          characterClass = 'block-faded';
+        }
+      }
+      renderedLine += "<div class='" + characterClass + "'></div>";
+    }, this);
+    wrappedLine = "<div class='phrase'>" + renderedLine + "</div>";
+    return wrappedLine;
   };
 
   this.repaint = function() {
-    //console.log("[abstract doc] repainting!", this.content);
     repaintedContent = "";
-    for (line of this.content) {
-      repaintedContent += "<div class='phrase'>";
-      for (character of line) {
-        if (character == 'X') {
-          //console.log("char was x");
-          repaintedContent += "<div class='block'> </div>";
-        } else {
-          //console.log("char was not x");
-          repaintedContent += "<div class='space'> </div>";
-        }
-      }
-      repaintedContent += "</div>";
+    if (this.template != null) {
+      repaintedContent = this.template.content.map(this.renderLine, this).join('');
     }
-
     this.surface.innerHTML = repaintedContent;
-    this.surface.scrollTop = this.surface.scrollHeight;
-
-    this.stats.innerHTML = this.statsFragment(); //"WORD COUNT: 0 / etc";
+    this.stats.innerHTML = this.statsFragment();
   };
 
   this.statsFragment = function() {
     if (this.workType != null) {
-      return "FILE " + this.workType + ".txt &nbsp; " +
+      baseStats = "FILE " + this.workType + ".txt &nbsp; " +
              "WORDS: " + this.wordCount() + " &nbsp; " +
              "EST. VALUE: $" + this.estimateValue() + " &nbsp; " +
              "RAD: " + this.radicalism() + "%";
+      if (this.documentScanComplete) {
+        baseStats += " &nbsp; [complete]";
+      }
+      return baseStats;
     } else {
       return "";
     }
@@ -67,8 +91,16 @@ var AbstractDoc = function() {
 
   this.wordCount = function() {
     var wc = 0;
-    for (line of this.content) {
-      wc += line.split(' ').length;
+    var lines = 0;
+    for (line of this.template.content) {
+      if (lines == this.cursorRow) {
+        wc += line.slice(0,this.cursorCol).split(' ').length;
+      } else if (lines > this.cursorRow) {
+        break;
+      } else {
+        wc += line.split(' ').length;
+      }
+      lines += 1;
     }
     return wc;
   };
